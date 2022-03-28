@@ -5,36 +5,33 @@ import {
    CardActions,
    Typography,
    IconButton,
-} from '@mui/material';
-import { AddShoppingCart } from '@mui/icons-material';
-import {
-   CardActionsStyled,
-   CardContentWrapper,
-   CardMediaStyles,
-   RootCard,
-} from './styles';
+} from '@material-ui/core';
+import { AddShoppingCart } from '@material-ui/icons';
+import useStyles from './styles';
 
 const Product = ({ name, description, price, image }) => {
+   const mui = useStyles();
+
    return (
-      <RootCard>
-         <CardMediaStyles image={image} title={name} />
+      <Card className={mui.root}>
+         <CardMedia className={mui.media} image={image} title={name} />
          <CardContent>
-            <CardContentWrapper>
+            <section className={mui.cardContent}>
                <Typography variant="h5" gutterBottom>
                   {name}
                </Typography>
                <Typography variant="h5">{price}</Typography>
-            </CardContentWrapper>
+            </section>
             <Typography variant="body2" color="textSecondary">
                {description}
             </Typography>
          </CardContent>
-         <CardActionsStyled disableSpacing>
+         <CardActions disableSpacing className={mui.cardActions}>
             <IconButton aria-label="Add to Cart">
                <AddShoppingCart />
             </IconButton>
-         </CardActionsStyled>
-      </RootCard>
+         </CardActions>
+      </Card>
    );
 };
 
