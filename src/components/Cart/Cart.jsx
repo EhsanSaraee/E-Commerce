@@ -1,4 +1,5 @@
 import { Button, Container, Grid, Typography } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import CartItem from './CartItem/CartItem';
 import useStyles from './styles';
 
@@ -7,7 +8,10 @@ const Cart = ({ cart }) => {
 
    const EmptyCart = () => (
       <Typography variant="subtitle1">
-         You have no items in your shopping cart, start adding some!
+         You have no items in your shopping cart
+         <Link to="/" className={mui.link}>
+            start adding some
+         </Link>
       </Typography>
    );
 
