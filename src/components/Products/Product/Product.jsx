@@ -10,7 +10,7 @@ import { AddShoppingCart } from '@material-ui/icons';
 import parse from 'html-react-parser';
 import useStyles from './styles';
 
-const Product = ({ name, description, price, image, onAddToCart, id }) => {
+const Product = ({ name, description, price, image, addToCartHandler, id }) => {
    const mui = useStyles();
 
    return (
@@ -32,7 +32,7 @@ const Product = ({ name, description, price, image, onAddToCart, id }) => {
          <CardActions disableSpacing className={mui.cardActions}>
             <IconButton
                aria-label="Add to Cart"
-               onClick={() => onAddToCart(id, 1)}
+               onClick={() => addToCartHandler(id, 1)}
             >
                <AddShoppingCart />
             </IconButton>

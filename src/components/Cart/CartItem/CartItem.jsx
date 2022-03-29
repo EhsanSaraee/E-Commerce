@@ -8,7 +8,15 @@ import {
 } from '@material-ui/core';
 import useStyles from './styles';
 
-const CartItem = ({ image, name, quantity, line_total }) => {
+const CartItem = ({
+   image,
+   name,
+   quantity,
+   line_total,
+   removeFromCartHandler,
+   updateCartQuantityHandler,
+   id,
+}) => {
    const mui = useStyles();
 
    return (
@@ -20,15 +28,28 @@ const CartItem = ({ image, name, quantity, line_total }) => {
          </CardContent>
          <CardActions className={mui.cartActions}>
             <div className={mui.buttons}>
-               <Button type="button" size="small">
+               <Button
+                  type="button"
+                  size="small"
+                  onClick={() => updateCartQuantityHandler(id, quantity - 1)}
+               >
                   -
                </Button>
                <Typography>&nbsp;{quantity}&nbsp;</Typography>
-               <Button type="button" size="small">
+               <Button
+                  type="button"
+                  size="small"
+                  onClick={() => updateCartQuantityHandler(id, quantity + 1)}
+               >
                   +
                </Button>
             </div>
-            <Button variant="contained" type="button" color="secondary">
+            <Button
+               variant="contained"
+               type="button"
+               color="secondary"
+               onClick={() => removeFromCartHandler(id)}
+            >
                Remove
             </Button>
          </CardActions>
