@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Cart, Navbar, Products } from './components';
+import { Cart, Checkout, Navbar, Products } from './components';
 import { commerce } from './lib/commerce';
 
 const App = () => {
@@ -54,7 +54,18 @@ const App = () => {
                   />
                }
             />
-            <Route path="/cart" element={<Cart cart={cart} emptyCartHandler={emptyCartHandler} removeFromCartHandler={removeFromCartHandler} updateCartQuantityHandler={updateCartQuantityHandler} />} />
+            <Route
+               path="/cart"
+               element={
+                  <Cart
+                     cart={cart}
+                     emptyCartHandler={emptyCartHandler}
+                     removeFromCartHandler={removeFromCartHandler}
+                     updateCartQuantityHandler={updateCartQuantityHandler}
+                  />
+               }
+            />
+            <Route path="/checkout" element={<Checkout />} />
          </Routes>
       </>
    );
