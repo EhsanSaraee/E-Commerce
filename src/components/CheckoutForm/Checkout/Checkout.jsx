@@ -1,12 +1,13 @@
 import { Paper, Step, StepLabel, Stepper, Typography } from '@material-ui/core';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import AddressForm from '../AddressForm';
 import PaymentForm from '../PaymentForm';
 import useStyles from './styles';
+import { commerce } from '../../../lib/commerce';
 
 const steps = ['Shipping address', 'Payment details'];
 
-const Checkout = () => {
+const Checkout = ({ cart }) => {
    const [activeStep, setActiveStep] = useState(0);
    const mui = useStyles();
 
