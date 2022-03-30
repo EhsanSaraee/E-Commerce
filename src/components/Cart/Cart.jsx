@@ -3,7 +3,12 @@ import { Link } from 'react-router-dom';
 import CartItem from './CartItem/CartItem';
 import useStyles from './styles';
 
-const Cart = ({ cart, emptyCartHandler, removeFromCartHandler, updateCartQuantityHandler }) => {
+const Cart = ({
+   cart,
+   emptyCartHandler,
+   removeFromCartHandler,
+   updateCartQuantityHandler,
+}) => {
    const mui = useStyles();
 
    const EmptyCart = () => (

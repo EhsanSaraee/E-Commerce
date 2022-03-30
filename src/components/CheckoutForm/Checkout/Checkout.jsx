@@ -25,11 +25,16 @@ const Checkout = ({ cart }) => {
       };
 
       tokenGenerator();
-   }, []);
+   }, [cart]);
 
    const Confirmation = () => <>confirmation</>;
 
-   const Form = () => (activeStep === 0 ? <AddressForm /> : <PaymentForm />);
+   const Form = () =>
+      activeStep === 0 ? (
+         <AddressForm checkoutToken={checkoutToken} />
+      ) : (
+         <PaymentForm />
+      );
 
    return (
       <>
@@ -46,7 +51,11 @@ const Checkout = ({ cart }) => {
                      </Step>
                   ))}
                </Stepper>
-               {activeStep === steps.length ? <Confirmation /> : <Form />}
+               {activeStep === steps.length ? (
+                  <Confirmation />
+               ) : (
+                  checkoutToken && <Form />
+               )}
             </Paper>
          </main>
       </>
