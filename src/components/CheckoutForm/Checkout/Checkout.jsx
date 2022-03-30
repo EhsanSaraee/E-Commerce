@@ -9,7 +9,23 @@ const steps = ['Shipping address', 'Payment details'];
 
 const Checkout = ({ cart }) => {
    const [activeStep, setActiveStep] = useState(0);
+   const [checkoutToken, setCheckoutToken] = useState(null);
    const mui = useStyles();
+
+   useEffect(() => {
+      const tokenGenerator = async () => {
+         try {
+            const token = await commerce.checkout.generateToken(cart.id, {
+               type: 'cart',
+            });
+            setCheckoutToken(token);
+         } catch (error) {
+            console.log(error);
+         }
+      };
+
+      tokenGenerator();
+   }, []);
 
    const Confirmation = () => <>confirmation</>;
 
